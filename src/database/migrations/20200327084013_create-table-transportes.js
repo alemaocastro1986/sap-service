@@ -1,19 +1,18 @@
 exports.up = (knex) => {
-  knex.hasTable('BASF_TRANSPORTES').then((exists) => {
-    if (!exists) {
-      return knex.schema.createTable('BASF_TRANSPORTES', (table) => {
-        table.integer('TRANSPORTES_ID').primary();
-        table.string('TRANSPORTADORA', 150);
-        table.string('PLACA', 10);
-        table.decimal('PESO_BRUTO', 10, 6);
-        table.date('DATA');
-        table.time('HORA', { precision: 6 });
-        table.text('OBSERVACAO');
-      });
-    }
+  return knex.schema.createTable('BASF_TRANSPORTES', (table) => {
+    table.bigInteger('TRANSPORTE_ID').primary('TRANSPORTE_ID').unique();
+    table.string('TRANSPORTADORA', 150);
+    table.string('PLACA', 10);
+    table.string('PESO_BRUTO', 12);
+    table.string('DATA', 12);
+    table.string('HORA', 10);
+    table.text('OBSERVACAO');
   });
 };
 
 exports.down = (knex) => {
-  return knex.schema.dropTable('BASF_TRANSPORTES');
+  return knex.schema
+    .dropTable('BASF_PICKINGS')
+    .dropTable('BASF_REMESSAS')
+    .dropTable('BASF_TRANSPORTES');
 };
