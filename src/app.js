@@ -1,5 +1,8 @@
 import express from 'express';
 
+import cors from 'cors';
+import helmet from 'helmet';
+
 import routes from './routes';
 
 class App {
@@ -12,6 +15,12 @@ class App {
   }
 
   middlewares() {
+    this.server.use(helmet());
+    this.server.use(
+      cors({
+        origin: false,
+      })
+    );
     this.server.use(
       express.json({
         limit: '1000kb',
