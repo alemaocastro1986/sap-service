@@ -17,5 +17,8 @@ routes.post('/remessas/bulk', RemessaControlller.bulk);
 routes.get('/remessas/items', RemessaItemsController.index);
 routes.post('/remessas/items', RemessaItemsController.store);
 routes.post('/remessas/bulk/items', RemessaItemsController.bulk);
+routes.get('/testes', (req, res) => {
+  return res.json({ ok: 'teste' });
+});
 
 export default routes;
