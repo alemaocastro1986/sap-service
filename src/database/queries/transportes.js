@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 import queryBuilder from '../index';
 
-const table = 'dbo.BASF_TRANSPORTES';
+const table = 'BASF_TRANSPORTES';
 
 export default {
   async getAll() {

@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 import queryBuilder from '../index';
 
-const table = 'dbo.BASF_REMESSA_ITEMS';
+const table = 'BASF_REMESSA_ITEMS';
 
 export default {
   async getAll() {
@@ -11,7 +11,7 @@ export default {
   },
 
   async store(item) {
-    const existsRemessa = await queryBuilder('dbo.BASF_REMESSAS')
+    const existsRemessa = await queryBuilder('BASF_REMESSAS')
       .select('REMESSA_ID')
       .where('REMESSA_ID', item.REMESSA_ID)
       .first();
@@ -52,7 +52,7 @@ export default {
     }
     const result = {};
     for (const item of items) {
-      const existsRemessa = await queryBuilder('dbo.BASF_REMESSAS')
+      const existsRemessa = await queryBuilder('BASF_REMESSAS')
         .select('REMESSA_ID')
         .where('REMESSA_ID', item.REMESSA_ID)
         .first();
