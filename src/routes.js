@@ -6,6 +6,10 @@ import RemessaItemsController from './app/controllers/RemessaItemsController';
 
 const routes = Router();
 
+routes.get('/', (req, res) => {
+  return res.json({ ok: 'teste' });
+});
+
 routes.get('/transportes', TransportesController.index);
 routes.post('/transportes', TransportesController.store);
 routes.post('/transportes/bulk', TransportesController.bulk);
@@ -17,8 +21,5 @@ routes.post('/remessas/bulk', RemessaControlller.bulk);
 routes.get('/remessas/items', RemessaItemsController.index);
 routes.post('/remessas/items', RemessaItemsController.store);
 routes.post('/remessas/bulk/items', RemessaItemsController.bulk);
-routes.get('/testes', (req, res) => {
-  return res.json({ ok: 'teste' });
-});
 
 export default routes;
