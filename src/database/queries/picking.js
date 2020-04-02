@@ -50,6 +50,7 @@ export default {
     if (items.length <= 0) {
       return new Error('Body request is invalid!');
     }
+
     const result = {};
     for (const item of items) {
       const existsRemessa = await queryBuilder('BASF_REMESSAS')
@@ -70,9 +71,7 @@ export default {
         if (!existsItem) {
           await queryBuilder(table).insert(item, ['*']);
           result[String(item.REMESSA_ID)] = 'created';
-        }
-
-        if (existsItem.QUANTIDADE !== item.QUANTIDADE) {
+        } else {
           await queryBuilder(table).where('ID', existsItem.ID).update({
             QUANTIDADE: item.QUANTIDADE,
           });
