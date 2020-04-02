@@ -36,8 +36,19 @@ export default {
     if (remessas.length <= 0) {
       return new Error('Body request is invalid!');
     }
+
+    const uniqueRemessas = remessas
+      .map((e) => e.REMESSA_ID)
+
+      // store the keys of the unique objects
+      .map((e, i, final) => final.indexOf(e) === i && i)
+
+      // eliminate the dead keys & store unique objects
+      .filter((e) => remessas[e])
+      .map((e) => remessas[e]);
+
     const result = {};
-    for (const remessa of remessas) {
+    for (const remessa of uniqueRemessas) {
       const existsTransporte = await queryBuilder('BASF_TRANSPORTES')
         .select('TRANSPORTE_ID')
         .where('TRANSPORTE_ID', remessa.TRANSPORTE_ID)

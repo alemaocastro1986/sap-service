@@ -29,7 +29,7 @@ class App {
     );
     this.server.use(
       express.json({
-        limit: '1000kb',
+        limit: '5000kb',
       })
     );
   }
