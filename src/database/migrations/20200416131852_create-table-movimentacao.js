@@ -1,6 +1,6 @@
 exports.up = (knex) => {
   return knex.schema.createTable('BASF_MOVIMENTACAO', (table) => {
-    table.increments('MOVIMENTACAO_ID');
+    table.increments('MOVIMENTACAO_ID').primary('MOVIMENTACAO_ID');
     table.bigInteger('TRANSPORTE_ID').unique();
     table.string('DATA_PROGRAMADA', 12);
     table.string('HORA_PROGRAMADA', 10);
