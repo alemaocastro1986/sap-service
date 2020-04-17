@@ -4,6 +4,7 @@ import TransportesController from './app/controllers/TransportesController';
 import RemessaControlller from './app/controllers/RemessaControlller';
 import RemessaItemsController from './app/controllers/RemessaItemsController';
 import MovimentacaoController from './app/controllers/MovimentacaoController';
+import TransportesHistoricoController from './app/controllers/TransportesHistoricoController';
 
 const routes = Router();
 
@@ -21,5 +22,8 @@ routes.post('/remessas/bulk/items', RemessaItemsController.bulk);
 
 routes.get('/movimentacao', MovimentacaoController.index);
 routes.post('/movimentacao/bulk', MovimentacaoController.bulk);
+
+routes.get('/historico', TransportesHistoricoController.index);
+routes.post('/historico/bulk', TransportesHistoricoController.bulk);
 
 export default routes;
